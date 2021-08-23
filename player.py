@@ -31,10 +31,12 @@ class Player:
          Updates the number of game tokens that player has placed
         """
         self.num_placed_tokens += 1
-        assert (self.is_first and self.num_placed_tokens <= 5), f"Player 1, " \
-            + "{self.player_name}, has exceded the number of game token placement."
-        assert (not self.is_first and self.num_placed_tokens <= 4), f"Player 2, " \
-            + "{self.player_name}, has exceded the number of game token placement."
+        if self.is_first and self.num_placed_tokens > 5:
+            raise Exception(f"Player 1, {self.player_name}, " \
+                + "has exceded the number of game token placement.")
+        elif self.num_placed_tokens > 4:
+            raise Exception(f"Player 2, {self.player_name}, " \
+                + "has exceded the number of game token placement.")
 
     def get_name(self, is_player_one):
         """
