@@ -26,7 +26,9 @@ class Game:
         """
         self.is_over = False
         self.players[0].player_reset()
+        self.players[0].get_name(True)
         self.players[1].player_reset()
+        self.players[1].get_name(False)
         for row in range(0, len(self.game_board)):
             for column in range(0, len(self.game_board[row])):
                 self.game_board[row][column] = " "
@@ -69,7 +71,11 @@ class Game:
         """
          Checks for the end of the game.
         """
-        if self.players[0].num_placed_tokens >= 3 or \
+        # Checks if the game is over because of a CAT game
+        if self.players[0].num_placed_tokens \
+            + self.players[1].num_placed_tokens == 9:
+            self.is_over = True
+        elif self.players[0].num_placed_tokens >= 3 or \
             self.players[1].num_placed_tokens >= 3:
             # Checks for a win
             for num in range(0, len(self.players)):
@@ -96,10 +102,6 @@ class Game:
                             self.is_over = True
                             self.players[num].is_winner = True
                             break
-        # Checks if the game is over because of a CAT game
-        elif self.players[0].num_placed_tokens \
-            + self.players[1].num_placed_tokens == 9:
-            self.is_over = True
 
     def get_outcome(self):
         """
@@ -111,7 +113,7 @@ class Game:
             print(f"Congrats, {self.players[1].player_name}!!! You win!!")
         else:
             print(f"Oh sorry, {self.players[0].player_name} and " \
-                + "{self.players[1].player_name}. It's a CAT game!!")
+                + f"{self.players[1].player_name}. It's a CAT game!!")
 
     def display_game_board(self):
         """
