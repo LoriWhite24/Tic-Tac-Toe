@@ -31,7 +31,7 @@ PLAY_AGAIN = True
 while PLAY_AGAIN:
     print("\n*****************************\n* " \
         + "Welcome to Tic-Tac-Toe!!! *\n*****************************\n")
-    G.game_reset()
+    G.game_reset(get_option("play with new players"))
     while not G.is_over:
         for number in range(0, len(G.players)):
             G.place_token(G.players[number])

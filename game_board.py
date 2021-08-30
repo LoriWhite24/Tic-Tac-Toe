@@ -20,15 +20,16 @@ class Game:
             for column in range(0, 3):
                 self.game_board[row][column] = " "
 
-    def game_reset(self):
+    def game_reset(self, new_players):
         """
          Resets the game
         """
         self.is_over = False
         self.players[0].player_reset()
-        self.players[0].get_name(True)
         self.players[1].player_reset()
-        self.players[1].get_name(False)
+        if new_players:
+            self.players[0].get_name(True)
+            self.players[1].get_name(False)
         for row in range(0, len(self.game_board)):
             for column in range(0, len(self.game_board[row])):
                 self.game_board[row][column] = " "
