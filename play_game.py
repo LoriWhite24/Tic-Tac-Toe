@@ -27,11 +27,16 @@ def check_option(option):
 
 G = game_board.Game()
 PLAY_AGAIN = True
+ROUND_ONE = True
 
 while PLAY_AGAIN:
     print("\n*****************************\n* " \
         + "Welcome to Tic-Tac-Toe!!! *\n*****************************\n")
-    G.game_reset(get_option("play with new players"))
+    if ROUND_ONE:
+        G.game_reset(True)
+        ROUND_ONE = False
+    else:
+        G.game_reset(get_option("play with new players"))
     while not G.is_over:
         for number in range(0, len(G.players)):
             G.place_token(G.players[number])

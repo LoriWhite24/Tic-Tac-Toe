@@ -21,9 +21,7 @@ class Player:
          Resets the player
         """
         self.is_first = False
-        self.game_token = "O"
         self.is_winner = False
-        self.player_name = "name"
         self.num_placed_tokens = 0
 
     def place_game_token(self):

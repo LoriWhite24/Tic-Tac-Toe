@@ -89,6 +89,7 @@ class Game:
                             - n - 1] for n in range(0, len(self.game_board))]):
                     self.is_over = True
                     self.players[num].is_winner = True
+                    break
                 else:
                     # Checks for a horizontal win
                     for row in range(0, len(self.game_board)):
